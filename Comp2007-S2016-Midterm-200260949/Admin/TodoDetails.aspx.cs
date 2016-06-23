@@ -8,7 +8,11 @@ using System.Web.UI.WebControls;
 // using statements required for EF DB access
 using Comp2007_S2016_Midterm_200260949.Models;
 using System.Web.ModelBinding;
-
+/**
+ * @author: Irin Avery
+ * @date: June 23, 2016
+ * @version: 0.0.3 - updated  editing functionality
+ */
 namespace Comp2007_S2016_Midterm_200260949 {
     public partial class TodoDetails : System.Web.UI.Page {
         protected void Page_Load(object sender, EventArgs e) {
@@ -16,6 +20,9 @@ namespace Comp2007_S2016_Midterm_200260949 {
                 this.GetTodo();
             }
         }
+        /// <summary>
+        /// Retreives the todo from the database for editing
+        /// </summary>
         protected void GetTodo() {
             // populate the form with existing data from the database
             int TodoID = Convert.ToInt32(Request.QueryString["TodoID"]);
@@ -58,7 +65,7 @@ namespace Comp2007_S2016_Midterm_200260949 {
                     // get the id from the URL
                     TodoID = Convert.ToInt32(Request.QueryString["TodoID"]);
 
-                    // get the current student from EF DB
+                    // get the current todo from EF DB
                     newTodo = (from todo in db.Todos
                                   where todo.TodoID == TodoID
                                select todo).FirstOrDefault();

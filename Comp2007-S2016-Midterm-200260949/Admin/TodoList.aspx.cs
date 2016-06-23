@@ -12,7 +12,11 @@ using System.Linq.Dynamic;
 
 namespace Comp2007_S2016_Midterm_200260949 {
     public partial class TodoList : System.Web.UI.Page {
-
+        /// <summary>
+        /// Retreives all the todo list and the default sort by the name
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e) {
             // if loading the page for the first time, populate the todo list
             if (!IsPostBack) {
@@ -22,11 +26,14 @@ namespace Comp2007_S2016_Midterm_200260949 {
                 this.GetTodoList();
             }
         }
+        /// <summary>
+        /// Retreives all the todos from the database
+        /// </summary>
        protected void GetTodoList() {
             using (TodoConnection db = new TodoConnection()) {
                 string SortString = Session["SortColumn"].ToString() + " " + Session["SortDirection"].ToString();
 
-                // query the Students Table using EF and LINQ
+                // query the Todo Table using EF and LINQ
                 var Todos = (from allTodos in db.Todos
                                 select allTodos);
 
@@ -37,6 +44,11 @@ namespace Comp2007_S2016_Midterm_200260949 {
                 TodoCount.Text = Todos.AsQueryable().OrderBy(SortString).ToList().Count.ToString();
             }
         }
+        /// <summary>
+        /// Deletes the todo on the row from the database
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void TodoGridView_RowDeleting(object sender, GridViewDeleteEventArgs e) {
             // store which row was clicked
             int selectedRow = e.RowIndex;
@@ -61,7 +73,11 @@ namespace Comp2007_S2016_Midterm_200260949 {
                 this.GetTodoList();
             }
         }
-
+        /// <summary>
+        /// Updates the grid when we change the pagination
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void TodoGridView_PageIndexChanging(object sender, GridViewPageEventArgs e) {
             // Set the new page number
             TodoGridView.PageIndex = e.NewPageIndex;
@@ -69,7 +85,12 @@ namespace Comp2007_S2016_Midterm_200260949 {
             // refresh the grid
             this.GetTodoList();
         }
-
+        /// <summary>
+        /// Sorts the gridview according to the sort column
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void TodoGridView_Sorting(object sender, GridViewSortEventArgs e) {
             // get the column to sorty by
             Session["SortColumn"] = e.SortExpression;
