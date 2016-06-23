@@ -228,6 +228,7 @@
     <Compile Include="Admin\TodoList.aspx.designer.cs">
       <DependentUpon>TodoList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Startup.cs" />
     <Compile Include="User_Controls\Jumbotron.ascx.cs">
       <DependentUpon>Jumbotron.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

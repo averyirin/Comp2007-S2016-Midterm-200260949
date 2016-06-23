@@ -4,9 +4,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-offset-2 col-md-8">
-                <h1>To Do List</h1>
+                <h1>Todo List</h1>
                 <!--Add Student Button-->
-                <a href="~/Admin/TodoDetails.aspx" class="btn btn-success btn-sm"><i class="fa fa-plus"></i>Add ToDo</a>
+                <a href="~/Admin/TodoDetails.aspx" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Add Todo</a>
 
 
 
@@ -24,7 +24,11 @@
                 </div>
                 
                 <!--Count Display 2 Bonus Marks -->
-                <asp:Label runat="server" ID="TodoCount" CssClass="label-default">5</asp:Label>
+                <h3>
+                    
+                    <label for="TodoCount">Total todo: </label>
+                    <asp:Label runat="server" ID="TodoCount" CssClass="label label-default">5</asp:Label>
+                </h3>
                 <!--Sorting 4 Bonus Marks -->                
                 <!-- Grid View-->
                 <asp:GridView runat="server"
