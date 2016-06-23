@@ -80,7 +80,12 @@ namespace Comp2007_S2016_Midterm_200260949 {
             // toggle the direction
             Session["SortDirection"] = Session["SortDirection"].ToString() == "ASC" ? "DESC" : "ASC";
         }
-
+        /// <summary>
+        /// Binds the sort to the header
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void TodoGridView_RowDataBound(object sender, GridViewRowEventArgs e) {
             if (IsPostBack) {
                 if (e.Row.RowType == DataControlRowType.Header) // if header row has been clicked
@@ -109,6 +114,10 @@ namespace Comp2007_S2016_Midterm_200260949 {
 
             // refresh the grid
             this.GetTodoList();
+        }
+
+        protected void TemplateCheckBox_CheckedChanged(object sender, EventArgs e) {
+
         }
     }
 }
